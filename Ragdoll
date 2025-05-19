@@ -1,0 +1,130 @@
+local plr = game.Players.LocalPlayer.Character
+local ios = game:GetService("UserInputService")
+local p1 = Instance.new("Part", plr)
+local w1 = Instance.new("Weld", plr.Torso)
+
+w1.Part0 = plr["Right Arm"]
+w1.Part1 = p1
+w1.C1 = CFrame.new(Vector3.new(0,1.1,0.3))
+
+p1.Size = Vector3.new(0.2,0.5,1)
+p1.Color = Color3.fromRGB(148,147,149)
+
+local p2 = Instance.new("Part", plr)
+local w2 = Instance.new("Weld", plr.Torso)
+
+w2.Part0 = plr["Right Arm"]
+w2.Part1 = p2
+w2.C1 = CFrame.new(Vector3.new(0,1.1,1.3))
+
+p2.Size = Vector3.new(0.05,0.3,2)
+p2.Color = Color3.fromRGB(106,105,107)
+
+local p3 = Instance.new("Part", plr)
+local w3 = Instance.new("Weld", plr.Torso)
+
+w3.Part0 = plr["Right Arm"]
+w3.Part1 = p3
+w3.C1 = CFrame.new(Vector3.new(0,1.1,1.45))
+
+p3.Size = Vector3.new(0.05,0.3,1.7)
+p3.Color = Color3.fromRGB(255,0,0)
+
+local b1 = Instance.new("Part", game.Workspace)
+local bw1 = Instance.new("Weld", b1)
+local d1 = Instance.new("DragDetector", b1)
+d1.RunLocally = true
+d1.DragStyle = "TranslateViewPlane"
+
+bw1.Part0 = plr.Torso
+bw1.Part1 = b1
+
+b1.Size = Vector3.new(2,2,1)
+
+local b2 = Instance.new("Part", game.Workspace)
+local bw2 = Instance.new("Weld", b2)
+local d2 = Instance.new("DragDetector", b2)
+d2.RunLocally = true
+d2.DragStyle = "TranslateViewPlane"
+
+bw2.Part0 = plr["Left Arm"]
+bw2.Part1 = b2
+
+b2.Size = Vector3.new(1,2,1)
+
+local b3 = Instance.new("Part", game.Workspace)
+local bw3 = Instance.new("Weld", b3)
+local d3 = Instance.new("DragDetector", b3)
+d3.RunLocally = true
+d3.DragStyle = "TranslateViewPlane"
+
+bw3.Part0 = plr["Right Arm"]
+bw3.Part1 = b3
+
+b3.Size = Vector3.new(1,2,1)
+
+local b4 = Instance.new("Part", game.Workspace)
+local bw4 = Instance.new("Weld", b4)
+local d4 = Instance.new("DragDetector", b4)
+d4.RunLocally = true
+d4.DragStyle = "TranslateViewPlane"
+
+bw4.Part0 = plr["Right Leg"]
+bw4.Part1 = b4
+
+b4.Size = Vector3.new(1,2,1)
+b4.CanCollide = false
+
+local b5 = Instance.new("Part", game.Workspace)
+local bw5 = Instance.new("Weld", b5)
+local d5 = Instance.new("DragDetector", b5)
+d5.RunLocally = true
+d5.DragStyle = "TranslateViewPlane"
+
+bw5.Part0 = plr["Left Leg"]
+bw5.Part1 = b5
+
+b5.Size = Vector3.new(1,2,1)
+b5.CanCollide = false
+
+plr.Torso.Transparency = 1
+plr["Right Leg"].Transparency = 1
+plr["Left Leg"].Transparency = 1
+plr["Right Arm"].Transparency = 1
+plr["Left Arm"].Transparency = 1
+
+ios.InputBegan:Connect(function(input, notinput)
+if not notinput then
+	if input.KeyCode == Enum.KeyCode.H then
+		if bw1.Enabled == true then
+			bw1.Enabled = false
+			bw2.Enabled = false
+			bw3.Enabled = false
+			bw4.Enabled = false
+			bw5.Enabled = false
+			b4.CanCollide = true
+			b5.CanCollide = true
+			else
+			bw1.Enabled = true
+			bw2.Enabled = true
+			bw3.Enabled = true
+			bw4.Enabled = true
+			bw5.Enabled = true
+			b4.CanCollide = false
+			b5.CanCollide = false	
+		end
+	end
+end
+end)
+
+ios.InputBegan:Connect(function(input, notinput)
+if not notinput then
+	if input.KeyCode == Enum.KeyCode.J then
+		b1:Destroy()
+		b2:Destroy()
+		b3:Destroy()
+		b4:Destroy()
+		b5:Destroy()
+	end
+end
+end)
